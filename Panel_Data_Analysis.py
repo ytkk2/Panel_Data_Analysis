@@ -11,7 +11,7 @@ from scipy import stats
 
 # read dataset from csv file
 # The number of dataset's index is 189
-data = pd.read_csv("/Users/katoyutaka/Desktop//soturon/csv_files/all_pref_DID_TFP.csv")
+data = pd.read_csv("~/csv_files/all_pref_DID_TFP.csv")
 
 # Convert the 'prefecture' column to a categorical data type
 # for more efficient memory usage and statistical modeling
@@ -26,7 +26,7 @@ pooled_ols_model = PooledOLS(
     panel_data["TFP"], sm.add_constant(panel_data["DID"])
 ).fit()
 
-# print(pooled_ols_model)
+print(pooled_ols_model)
 
 
 # Fixed Effects Model
@@ -39,7 +39,7 @@ print(fe_model)
 # Random Effects Model
 re_model = RandomEffects(panel_data["TFP"], sm.add_constant(panel_data["DID"])).fit()
 
-# print(re_model)
+print(re_model)
 
 # Hausman Speification Test
 # Get parameters from fe_model and re_model
@@ -49,15 +49,15 @@ re_coef = re_model.params
 # Calculate the difference in covariance matrices
 cov_diff = fe_model.cov - re_model.cov
 
-# ハウスマン検定統計量を計算
+# Calculate the Hausman test statistic
 hausman_stat = (fe_coef - re_coef).T @ np.linalg.inv(cov_diff) @ (fe_coef - re_coef)
 
-# 自由度を計算
+# Calculate degrees of freedom
 df = len(fe_coef)
 
-# P値を計算
+# Calculate the p-value
 p_value = stats.chi2.sf(hausman_stat, df)
 
-# print("Hausman Test Statistic:", hausman_stat)
-# print("Degrees of Freedom:", df)
-# print("P-value:", p_value)
+print("Hausman Test Statistic:", hausman_stat)
+print("Degrees of Freedom:", df)
+print("P-value:", p_value)
