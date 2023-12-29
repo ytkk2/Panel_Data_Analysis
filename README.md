@@ -24,3 +24,7 @@ To run this project, Docker is used to ensure a consistent environment and repro
      ```bash
      docker run panel
      ```
+
+## Important Notes
+
+- Ensure that Docker is installed on your system and is running before executing these commands.
