@@ -1,6 +1,6 @@
 # Panel Data Analysis
 
-## Subtitle: Panel Data Analysis on Densely Inhabited District Population Density and Relative Total Factor Productivity
+## Subtitle: Panel Data Analysis on Densely Inhabited District Population Density and Relative Total Factor Productivity in Japan
 
 ### Detailed Description
 This project aims to perform a comprehensive analysis of panel data. The key steps include:
